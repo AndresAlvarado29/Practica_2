@@ -27,8 +27,8 @@ public class Persona {
     }
     
 
-    public Persona( String cedula, String nombre, String apellido, String correo, String contraseña) {
-        
+    public Persona(int id, String cedula, String nombre, String apellido, String correo, String contraseña) {
+        this.id = id;
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -36,7 +36,15 @@ public class Persona {
         this.contraseña = contraseña;
     }
 
-    
+    public Persona(String cedula, String nombre, String apellido, String correo, String contraseña) {
+        this.cedula = cedula;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.correo = correo;
+        this.contraseña = contraseña;
+    }
+
+   
 
     
 

@@ -164,7 +164,7 @@ private ControladorPersona controladorPersona;
         if(txtCedula.getText().trim().equals("")|| txtNom.getText().trim().equals("")|| txtApellido.getText().trim().equals("")|| txtCorreo.getText().trim().equals("")|| jPassword.getText().trim().equals("")){
             JOptionPane.showMessageDialog(this, "Faltan datos");
         }else{
-          Persona  p=new Persona(txtCedula.getText(), txtNom.getText(), txtApellido.getText(), txtCorreo.getText(), jPassword.getText());
+          Persona  p=new Persona(controladorPersona.generarID(),txtCedula.getText(), txtNom.getText(), txtApellido.getText(), txtCorreo.getText(), jPassword.getText());
                 
             controladorPersona.crear(p);
             JOptionPane.showMessageDialog(this, "Usuario creado Correctamente");
