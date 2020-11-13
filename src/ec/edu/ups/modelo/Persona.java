@@ -16,16 +16,31 @@ public class Persona {
    private String cedula;
    private String nombre;
    private String apellido;
+   private String correo;
+   private String contraseña;
 
     public Persona() {
     }
 
-    public Persona(int id, String cedula, String nombre, String apellido) {
-        this.id = id;
+    public Persona(String correo) {
+        this.correo = correo;
+    }
+    
+
+    public Persona( String cedula, String nombre, String apellido, String correo, String contraseña) {
+        
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.correo = correo;
+        this.contraseña = contraseña;
     }
+
+    
+
+    
+
+    
 
     public int getId() {
         return id;
@@ -58,6 +73,23 @@ public class Persona {
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+    
 
     @Override
     public int hashCode() {

@@ -5,17 +5,72 @@
  */
 package ec.edu.ups.vista;
 
+import ec.edu.ups.controlador.ControladorPersona;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+
 /**
  *
  * @author Andres
  */
 public class Principal extends javax.swing.JFrame {
-
+private IniciarSesion iniciarSesion;
+private Registrar registrar;
+private Buscar buscar;
+private GestionPersona gestionPersona;
+private GestionTelefono gestionTelefono;
+private ControladorPersona controladorPersona;
     /**
      * Creates new form Principal
      */
     public Principal() {
         initComponents();
+        GestionMenu.setVisible(false);
+        cerrar.setVisible(false);
+        
+        gestionTelefono=new GestionTelefono();
+        gestionPersona=new GestionPersona();
+        iniciarSesion=new IniciarSesion(controladorPersona,this);
+        registrar=new Registrar(controladorPersona);
+        buscar=new Buscar();
+        
+        jDesktopPane1.add(gestionPersona);
+        jDesktopPane1.add(gestionTelefono);
+        jDesktopPane1.add(iniciarSesion);
+        jDesktopPane1.add(registrar);
+        jDesktopPane1.add(buscar);
+    }
+
+    public JMenu getGestionMenu() {
+        return GestionMenu;
+    }
+
+    public void setGestionMenu(JMenu GestionMenu) {
+        this.GestionMenu = GestionMenu;
+    }
+
+    public JMenuItem getCerrar() {
+        return cerrar;
+    }
+
+    public void setCerrar(JMenuItem cerrar) {
+        this.cerrar = cerrar;
+    }
+
+    public JMenuItem getIniciar() {
+        return iniciar;
+    }
+
+    public void setIniciar(JMenuItem iniciar) {
+        this.iniciar = iniciar;
+    }
+
+    public JMenuItem getRegister() {
+        return register;
+    }
+
+    public void setRegister(JMenuItem register) {
+        this.register = register;
     }
 
     /**
@@ -29,8 +84,20 @@ public class Principal extends javax.swing.JFrame {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jPanel1 = new javax.swing.JPanel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        iniciar = new javax.swing.JMenuItem();
+        register = new javax.swing.JMenuItem();
+        listar = new javax.swing.JMenuItem();
+        cerrar = new javax.swing.JMenuItem();
+        salir = new javax.swing.JMenuItem();
+        GestionMenu = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(0, 153, 255));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -56,6 +123,72 @@ public class Principal extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jMenu1.setText("Inicio");
+
+        iniciar.setText("Iniciar Sesión");
+        iniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                iniciarActionPerformed(evt);
+            }
+        });
+        jMenu1.add(iniciar);
+
+        register.setText("Registrar");
+        register.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registerActionPerformed(evt);
+            }
+        });
+        jMenu1.add(register);
+
+        listar.setText("Listar Telefono");
+        listar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarActionPerformed(evt);
+            }
+        });
+        jMenu1.add(listar);
+
+        cerrar.setText("Cerrar Sesión");
+        cerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrarActionPerformed(evt);
+            }
+        });
+        jMenu1.add(cerrar);
+
+        salir.setText("Salir");
+        salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirActionPerformed(evt);
+            }
+        });
+        jMenu1.add(salir);
+
+        jMenuBar1.add(jMenu1);
+
+        GestionMenu.setText("Gestión");
+
+        jMenuItem5.setText("Teléfonos");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        GestionMenu.add(jMenuItem5);
+
+        jMenuItem6.setText("Usuario");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        GestionMenu.add(jMenuItem6);
+
+        jMenuBar1.add(GestionMenu);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -64,11 +197,48 @@ public class Principal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarActionPerformed
+      GestionMenu.setVisible(false);
+      iniciarSesion.setVisible(true);
+      registrar.setVisible(true);
+      cerrar.setVisible(false);
+    }//GEN-LAST:event_cerrarActionPerformed
+
+    private void iniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarActionPerformed
+iniciarSesion.setVisible(true);
+    }//GEN-LAST:event_iniciarActionPerformed
+
+    private void registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerActionPerformed
+        if (!registrar.isVisible()) {
+            registrar.setVisible(true);
+        }
+    }//GEN-LAST:event_registerActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+       gestionTelefono.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void listarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarActionPerformed
+        if (!buscar.isVisible()) {
+            buscar.setVisible(true);
+        }
+    }//GEN-LAST:event_listarActionPerformed
+
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+         System.exit(0);
+    }//GEN-LAST:event_salirActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        if(!gestionPersona.isVisible()){
+        gestionPersona.setVisible(true);
+        }
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -106,7 +276,17 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu GestionMenu;
+    private javax.swing.JMenuItem cerrar;
+    private javax.swing.JMenuItem iniciar;
     private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenuItem listar;
+    private javax.swing.JMenuItem register;
+    private javax.swing.JMenuItem salir;
     // End of variables declaration//GEN-END:variables
 }
