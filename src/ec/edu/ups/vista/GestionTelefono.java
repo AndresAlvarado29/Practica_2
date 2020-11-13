@@ -5,6 +5,8 @@
  */
 package ec.edu.ups.vista;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Andres
@@ -27,21 +29,308 @@ public class GestionTelefono extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        cbxOperadora = new javax.swing.JComboBox<>();
+        cbxTipo = new javax.swing.JComboBox<>();
+        txtNumeroFormateado = new javax.swing.JFormattedTextField();
+        txtCodigo = new javax.swing.JTextField();
+        btnAgregar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblTelefonos = new javax.swing.JTable();
+
+        jLabel1.setText("Codigo:");
+
+        jLabel2.setText("Tipo:");
+
+        jLabel3.setText("Numero:");
+
+        jLabel4.setText("Operador:");
+
+        cbxOperadora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--seleccione una operadora--" }));
+
+        cbxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Seleccione un tipo de telefono--", "Casa", "Trabajo", "Fax Casa", "Fax Trabajo", "Móvil", "Localizador" }));
+        cbxTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxTipoActionPerformed(evt);
+            }
+        });
+
+        try {
+            txtNumeroFormateado.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###-###-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtNumeroFormateado.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+        txtNumeroFormateado.setText("(+593)   -   -    ");
+        txtNumeroFormateado.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNumeroFormateadoFocusGained(evt);
+            }
+        });
+        txtNumeroFormateado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNumeroFormateadoActionPerformed(evt);
+            }
+        });
+
+        txtCodigo.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtCodigo.setText("0");
+        txtCodigo.setEnabled(false);
+
+        btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
+
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
+        tblTelefonos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Codigo", "Tipo", "Número", "Operadora"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblTelefonos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblTelefonosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblTelefonos);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel1)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(cbxOperadora, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(txtCodigo)
+                                                .addComponent(txtNumeroFormateado, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
+                                            .addComponent(cbxTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(btnAgregar)
+                .addGap(43, 43, 43)
+                .addComponent(btnEditar)
+                .addGap(47, 47, 47)
+                .addComponent(btnEliminar)
+                .addGap(38, 38, 38)
+                .addComponent(btnCancelar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(cbxTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(txtNumeroFormateado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(cbxOperadora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAgregar)
+                    .addComponent(btnEditar)
+                    .addComponent(btnEliminar)
+                    .addComponent(btnCancelar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cbxTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTipoActionPerformed
+       /* //se aplica el manejo de exepciones(bloques de excepciones)
+        try{
+            String item = (String)cbxTipo.getSelectedItem();
+            if(item.equals("Casa")){
+                txtNumeroFormateado.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(+593)#-####-###")));
+            } else if(item.equals("Movil")){
+                txtNumeroFormateado.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(+593)#-####-####")));
+            }else{txtNumeroFormateado.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(+593)#-####-###"))); }
+        }catch(ParseException ex){
+            ex.printStackTrace();
+        }*/
+    }//GEN-LAST:event_cbxTipoActionPerformed
+
+    private void txtNumeroFormateadoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNumeroFormateadoFocusGained
+        if(cbxTipo.getSelectedIndex()==0){
+            cbxTipo.requestFocus();
+            JOptionPane.showMessageDialog(this, "Por favor, seleccione un tipo de teléfono");
+        }
+
+    }//GEN-LAST:event_txtNumeroFormateadoFocusGained
+
+    private void txtNumeroFormateadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroFormateadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNumeroFormateadoActionPerformed
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+       /* controladorUsuario.agregarTelefono(Integer.parseInt(txtCodigo.getText()), txtNumeroFormateado.getText(),cbxTipo.getSelectedItem().toString() , cbxOperadora.getSelectedItem().toString());
+        cargarTelefonosTblTelefonos();
+        txtCodigo.setText("");
+        txtNumeroFormateado.setValue("");
+        cbxTipo.setSelectedIndex(0);
+        cbxOperadora.setSelectedIndex(0);
+        cargarSiguienteCodigo();
+        cancelarEdicion();
+        JOptionPane.showMessageDialog(this, "Agregado correctamente");
+*/
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        /*controladorUsuario.actualizarTelefono(Integer.parseInt(txtCodigo.getText()), txtNumeroFormateado.getText(),cbxTipo.getSelectedItem().toString() , cbxOperadora.getSelectedItem().toString());
+        cargarTelefonosTblTelefonos();
+        txtCodigo.setText("");
+        txtNumeroFormateado.setValue("");
+        cbxTipo.setSelectedIndex(0);
+        cbxOperadora.setSelectedIndex(0);
+        cargarSiguienteCodigo();
+        cancelarEdicion();
+        btnAgregar.setEnabled(true);
+        JOptionPane.showMessageDialog(this, "Actualizado correctamente");*/
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+       /* int respuesta=  JOptionPane.showConfirmDialog(this, "estas seguro de eliminar");
+        if (respuesta==JOptionPane.YES_OPTION) {
+            controladorUsuario.eliminarTelefono(Integer.parseInt(txtCodigo.getText()));
+            cargarTelefonosTblTelefonos();
+            txtCodigo.setText("");
+            txtNumeroFormateado.setValue("");
+            cbxTipo.setSelectedIndex(0);
+            cbxOperadora.setSelectedIndex(0);
+            cargarSiguienteCodigo();
+            cancelarEdicion();
+            btnAgregar.setEnabled(true);
+            JOptionPane.showMessageDialog(this, "Eliminado correctamente");
+        }
+*/
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+      /*  btnAgregar.setEnabled(true);
+        txtCodigo.setText("");
+        txtNumeroFormateado.setValue("");
+        cbxTipo.setSelectedIndex(0);
+        cbxOperadora.setSelectedIndex(0);
+        cargarSiguienteCodigo();
+        cancelarEdicion();*/
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void tblTelefonosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTelefonosMouseClicked
+        /*int filaIndex = tblTelefonos.getSelectedRow();
+        if(filaIndex>=0 ){
+            activarEdicion();
+            btnAgregar.setEnabled(false);
+            int codigo =(int) tblTelefonos.getValueAt(filaIndex, 0);
+            String tipo =tblTelefonos.getValueAt(filaIndex, 1).toString();
+            String numero =tblTelefonos.getValueAt(filaIndex, 2).toString();
+            String operadora =tblTelefonos.getValueAt(filaIndex, 3).toString();
+            txtCodigo.setText(String.valueOf(codigo));
+            cbxTipo.setSelectedItem(tipo);
+            txtNumeroFormateado.setValue(numero);
+            cbxOperadora.setSelectedItem(operadora);
+        }*/
+    }//GEN-LAST:event_tblTelefonosMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JComboBox<String> cbxOperadora;
+    private javax.swing.JComboBox<String> cbxTipo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblTelefonos;
+    private javax.swing.JTextField txtCodigo;
+    private javax.swing.JFormattedTextField txtNumeroFormateado;
     // End of variables declaration//GEN-END:variables
 }

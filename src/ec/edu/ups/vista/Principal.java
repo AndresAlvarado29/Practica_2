@@ -29,7 +29,7 @@ private ControladorPersona controladorPersona;
         cerrar.setVisible(false);
         
         gestionTelefono=new GestionTelefono();
-        gestionPersona=new GestionPersona();
+        gestionPersona=new GestionPersona(controladorPersona);
         iniciarSesion=new IniciarSesion(controladorPersona,this);
         registrar=new Registrar(controladorPersona);
         buscar=new Buscar();
