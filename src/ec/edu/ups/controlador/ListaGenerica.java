@@ -21,8 +21,10 @@ public abstract class ListaGenerica<T> {
         lista = new ArrayList();
     }
     
-    public boolean crear(T nObjeto){       
+    public boolean crear(T nObjeto){  
+        if(nObjeto!=null)
     return lista.add(nObjeto);
+        return false;
     }
     public T buscar(T oBuscado){
     return lista.stream().filter(objeto-> objeto.equals(oBuscado)).findFirst().orElse(null);
@@ -61,6 +63,13 @@ public abstract class ListaGenerica<T> {
     public void setLista(List<T> lista) {
         this.lista = lista;
     }
+    
+    public int generarID(){
+    if (lista.size()>0) {
+        return lista.indexOf(lista.size()-1)+1;
+    }
+   return 1;
+}
    
        
 }

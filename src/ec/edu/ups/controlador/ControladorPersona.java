@@ -23,15 +23,9 @@ List<Persona> p = getLista();
     }
     return null;
 }
-public int generarID(){
-List<Persona> p=getLista();
-    if(p.size()>0){
-        for (int i = 0; i < p.size(); i++) {
-            return p.size()-1+p.get(i).getId();
-        }
-    }
-    return 1;
-}
+
+   
+
     @Override
     public boolean validar(Persona objeto) {
         String correo=objeto.getCorreo();
